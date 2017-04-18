@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Location</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  </head>
+  <body>
+
+ <h1>EditNew Location</h1>
+    <hr />
+    <form class='col-sm-5' method='post'>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="_id" value="<%= location._id %>">
+
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input name='name' type="text" class="form-control" id="inputName" placeholder="Name" value='<%= location.name %>'>
+        </div>
+
+        <div class="form-group">
+          <label for="inputCategory">Category</label>
+          <select name='category' class="form-control" id="inputCategory" value='<%= location.category %>'>
+            <option value='mall'>Mall</option>
+            <option value='pub'>Pub</option>
+            <option value='shop'>Shop</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="inputLocation">Location</label>
+            <label class="sr-only" for="inputLocation"></label>
+            <div class="input-group">
+                <div class="input-group-addon">Latitude</div>
+                <input name='latitude' type="text" class="form-control" id="inputLocation" placeholder="Latitude" value='<%= location.address.latitude %>'>
+                <div class="input-group-addon">Longitude</div>
+                <input name='longitude' type="text" class="form-control" id="inputLocation" placeholder="Longitude" value='<%= location.address.longitude %>'>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">update Location</button>
+  </body>
+</html>

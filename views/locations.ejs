@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Location</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <% if(success == true){ %>
+        <div class="alert alert-success" role="alert">
+           <h3> Operation done successfully!</h3>
+        </div>
+    <% } %>
+
+    <h2> Location List </h2> 
+    <% if (location) { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Catagory</th>
+            <th>Location</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < location.length; i++) {%>
+            <tr>
+              <td><%= location[i].name %></td>
+              <td><%= location[i].category %></td>
+              <td><%= location[i].address.latitude + ', ' + location[i].address.longitude %></td>
+              <td><a href='/location/edit/<%= location[i]._id %>' class='btn btn-warning'> Edit</a> <a href='/location/delete/<%= location[i]._id %>' class='btn btn-danger'> Delete</a> </td>
+            </tr>
+          <% } %>
+        </tbody> 
+      </table>
+    <% } else{ %>
+        <hr />
+        <p> No record found!</p>
+    <% } %>
+  </body>
+</html>
